@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { auth } from "../firebase";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -33,11 +34,22 @@ export default function PasswordReset() {
       setEmail(value);
     }
   };
-
+  //sendPasswordResetEmail -firebase method for users to reset password. takes in email as arguement sends email or throws error
   const sendResetEmail = event => {
     event.preventDefault();
+    auth    
+    .sendPasswordResetEmail(email)
+    .then(() => {
+        setEmailHasBeenSent(true)
+        setTimeout(() => {
+            setEmailHasBeenSent(false)}, 3000)
+        })
+        .catch(() => {
+            setError("Error resetting password, please try again")
+    })
+    }
 
-  };
+
   const classes = useStyles();
 return (
             <Container component="main" maxWidth="xs">

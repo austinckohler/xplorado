@@ -32,6 +32,8 @@ export default function SignUp() {
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
 
+
+  //create a new user with email, password with createUserWithEmailAndPassword method by Firebase, and generate user document for the new user
   const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
     event.preventDefault();
     try{

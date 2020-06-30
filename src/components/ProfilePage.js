@@ -1,10 +1,14 @@
 // will display the user’s display name, email, and profile picture or a placeholder image if they are signing in via email/password
 
-import React from 'react'
+
+//useContext hook was used to get current value of UserContext and grabbed the pertainent data.
+import React, { useContext } from "react";
+import { UserContext } from "../providers/UserProvider";
+import {auth} from "../firebase";
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
+// import TextField from '@material-ui/core/TextField';
+// import Link from '@material-ui/core/Link';
+// import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -29,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
 
 function ProfilePage() {
     const classes = useStyles();
+    const user = useContext(UserContext);
+    const {photoURL, displayName, email} = user;
+  console.log(user);
     return (
         <Container>
             <div>
@@ -40,10 +47,10 @@ function ProfilePage() {
                 }}></div>
              <div className={classes.paper}>
              <Typography component="h2" variant="h5">
-               Name
+               {displayName}
              </Typography>
              <Typography component="h3" variant="h5">
-               Email
+               {email}
              </Typography>
              </div>
              </div>
@@ -51,7 +58,9 @@ function ProfilePage() {
                     fullWidth
                     variant="contained"
                     color="primary"
-                    className={classes.submit}>
+                    className={classes.submit}
+                    onClick = {() => {auth.signOut()}}
+                    >
                  Sign Out
              </Button>
 

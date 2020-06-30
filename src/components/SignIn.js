@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import {signInWithGoogle} from '../firebase'
+import {signInWithGoogle, auth} from '../firebase'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
@@ -32,6 +32,11 @@ export default function SignIn() {
     const [error, setError] = useState(null)
     const signInWithEmailAndPasswordHandler = (event, email, password) => {
         event.preventDefault()
+        auth.signInWithEmailAndPassword(email, password)
+        .catch(error => {
+            setError("Error signing in with those credentials")
+        console.error("Error signing in with those credentials", error)
+    })
     }
 
 const onChange = (event) => {
