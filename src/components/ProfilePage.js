@@ -29,30 +29,31 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-  
-
-function ProfilePage() {
+export default function ProfilePage() {
     const classes = useStyles();
+
     const user = useContext(UserContext);
     const {photoURL, displayName, email} = user;
-  console.log(user);
+    console.log(user);
+
     return (
         <Container>
             <div>
                 <div style={{
-                    background: `url(https://images.unsplash.com/photo-1441441247730-d09529166668?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80) no-repeat center center`,
+                    background: `url(${photoURL || 'https://images.unsplash.com/photo-1441441247730-d09529166668?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80'}) no-repeat center center`,
                     backgroundSize: 'cover',
                     height: "200px",
                     width: '200px"'
-                }}></div>
-             <div className={classes.paper}>
-             <Typography component="h2" variant="h5">
-               {displayName}
-             </Typography>
-             <Typography component="h3" variant="h5">
-               {email}
-             </Typography>
-             </div>
+                }}>
+                </div>
+                <div className={classes.paper}>
+                <Typography component="h2" variant="h5">
+                {displayName}
+                </Typography>
+                <Typography component="h3" variant="h5">
+                {email}
+                </Typography>
+                </div>
              </div>
              <Button type="submit"
                     fullWidth
@@ -63,9 +64,7 @@ function ProfilePage() {
                     >
                  Sign Out
              </Button>
-
         </Container>
     )
 }
 
-export default ProfilePage
