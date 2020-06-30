@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Router } from "@reach/router";
-import SignIn from "./Components/SignIn";
-import SignUp from "./Components/SignUp";
-import Application from "./Components/Application";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import Application from "./components/Application";
 import UserProvider from "./providers/UserProvider";
-import ProfilePage from "./Components/ProfilePage";
+import ProfilePage from "./components/ProfilePage";
 import { UserContext } from "./providers/UserProvider";
 
 export default function App() {
