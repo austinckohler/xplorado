@@ -21,7 +21,6 @@ export default function Application() {
           <SignIn path="/" />
           <PasswordReset path = "passwordReset" />
         </Router>
-      
   );
 }
 
