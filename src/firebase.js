@@ -4,15 +4,15 @@ import "firebase/firestore";
 import { functions } from 'firebase'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD4AC1T_YVYpWZ4PIqVS9VnF8RoOXoHDrg",
-    authDomain: "xplorado-9da45.firebaseapp.com",
-    databaseURL: "https://xplorado-9da45.firebaseio.com",
-    projectId: "xplorado-9da45",
-    storageBucket: "xplorado-9da45.appspot.com",
-    messagingSenderId: "242528628544",
-    appId: "1:242528628544:web:fdc0e3bbc364df937214a5",
-    measurementId: "G-CV4PSNW1VW"
-}
+        apiKey: "AIzaSyD4AC1T_YVYpWZ4PIqVS9VnF8RoOXoHDrg",
+        authDomain: "xplorado-9da45.firebaseapp.com",
+        databaseURL: "https://xplorado-9da45.firebaseio.com",
+        projectId: "xplorado-9da45",
+        storageBucket: "xplorado-9da45.appspot.com",
+        messagingSenderId: "242528628544",
+        appId: "1:242528628544:web:be73eefeed2c4ae77214a5",
+        measurementId: "G-W5K5QFC7NV"
+  };
 //initializes firebase application, authentication and cloud storage
 firebase.initializeApp(firebaseConfig);
 

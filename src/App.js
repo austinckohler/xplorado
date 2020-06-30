@@ -6,6 +6,7 @@ import Application from "./components/Application";
 import UserProvider from "./providers/UserProvider";
 import ProfilePage from "./components/ProfilePage";
 import { UserContext } from "./providers/UserProvider";
+import firebase from 'firebase/app';
 
 export default function App() {
   return (

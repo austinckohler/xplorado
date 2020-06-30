@@ -76,7 +76,8 @@ export default function SignUp() {
                     fullWidth
                     id="displayName"
                     label="First and Last Name"
-                    name={displayName}
+                    name="displayName"
+                    value={displayName}
                     autoFocus
                     onChange = {(event) => onChange(event)}
                   />
@@ -87,7 +88,8 @@ export default function SignUp() {
                     fullWidth
                     id="userEmail"
                     label="Email Address"
-                    name={email}
+                    name="userEmail"
+                    value={email}
                     autoComplete="email"
                     autoFocus
                     onChange = {(event) => onChange(event)}
@@ -97,7 +99,8 @@ export default function SignUp() {
                     margin="normal"
                     required
                     fullWidth
-                    name={password}
+                    name="userPassword"
+                    value={password}
                     label="Password"
                     type="password"
                     id="userPassword"

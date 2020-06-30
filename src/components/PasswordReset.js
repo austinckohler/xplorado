@@ -83,7 +83,8 @@ export default function PasswordReset() {
                     type="email"
                     id="userEmail"
                     label="Email Address"
-                    name={email}
+                    name="userEmail"
+                    value={email}
                     autoComplete="email"
                     autoFocus
                     onChange = {onChange}

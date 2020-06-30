@@ -1,5 +1,6 @@
 import React, { useState} from 'react'
-import {signInWithGoogle, auth} from '../firebase'
+import { signInWithGoogle } from '../firebase'
+import { auth } from '../firebase'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
@@ -24,31 +25,30 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-  
-
 export default function SignIn() {
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(null)
-    const signInWithEmailAndPasswordHandler = (event, email, password) => {
-        event.preventDefault()
-        auth.signInWithEmailAndPassword(email, password)
-        .catch(error => {
-            setError("Error signing in with those credentials")
-        console.error("Error signing in with those credentials", error)
-    })
-    }
 
-const onChange = (event) => {
-    const {name, value} = event.currentTarget
+    const signInWithEmailAndPasswordHandler = (event,email, password) => {
+        event.preventDefault();
+        auth.signInWithEmailAndPassword(email, password).catch(error => {
+        setError("Error signing in with password and email!");
+          console.error("Error signing in with password and email", error);
+        });
+      };
 
-    if (name === 'userEmail') {
-        setEmail(value)
-    }
-    else if (name === 'userPassword') {
-        setPassword(value)
-    }
-} 
+      const onChange = (event) => {
+        const {name, value} = event.currentTarget;
+      
+        if(name === 'userEmail') {
+            setEmail(value);
+        }
+        else if(name === 'userPassword'){
+          setPassword(value);
+        }
+    };
 
 const classes = useStyles();
     return (
@@ -67,7 +67,8 @@ const classes = useStyles();
                     fullWidth
                     id="userEmail"
                     label="Email Address"
-                    name={email}
+                    name="userEmail"
+                    value={email}
                     autoComplete="email"
                     autoFocus
                     onChange = {(event) => onChange(event)}
@@ -77,7 +78,8 @@ const classes = useStyles();
                     margin="normal"
                     required
                     fullWidth
-                    name={password}
+                    name="userPassword"
+                    value={password}
                     label="Password"
                     type="password"
                     id="userPassword"
@@ -100,7 +102,9 @@ const classes = useStyles();
                   variant="contained"
                   color="secondary"
                   className={classes.submit}
-                  onClick={() => {signInWithGoogle()}}
+                  onClick={() => {
+                    signInWithGoogle();
+                  }}
                   >
                   Sign in with Google  
                   </Button>
