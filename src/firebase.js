@@ -17,6 +17,8 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
+//instance of the google provider object
+// firebase method signInWithPop - uses a popup / we could also use signInWithRedirect - redirecting user to  page
 const provider = new firebase.auth.GoogleAuthProvider()
 export const signInWithGoogle = () => {
     auth.signInWithPopup(provider)
