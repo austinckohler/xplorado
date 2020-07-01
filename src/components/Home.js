@@ -35,7 +35,8 @@ function ScrollTop(props) {
 
 function Home(props) {
   return (
-    <Container component="main" maxWidth="sm">
+    <>
+      {/* // <Container component="main" maxWidth="sm"> */}
       <NavBar />
       <HomeHero />
       <ScrollTop {...props}>
@@ -47,7 +48,8 @@ function Home(props) {
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
-    </Container>
+      {/* // </Container> */}
+    </>
   );
 }
 

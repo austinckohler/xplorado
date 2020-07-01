@@ -26,8 +26,9 @@ function NavBar() {
     <div className={classes.root}>
       <AppBar
         position="static"
-        style={{ backgroundColor: "#696969" }}
+        style={{ backgroundColor: "rgba(32, 32, 39, 0.97)" }}
         maxWidth="sm"
+        elevation="4"
       >
         <Toolbar>
           <Link
@@ -37,7 +38,7 @@ function NavBar() {
             style={{ textDecoration: "none" }}
           >
             <Typography variant="h6" className={classes.title}>
-              XploRADo
+              Xplorado
             </Typography>
           </Link>
           <Link href="signIn" variant="button" className={classes.linkButton}>

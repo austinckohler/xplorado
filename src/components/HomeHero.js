@@ -64,11 +64,17 @@ function HomeHero() {
   return (
     <section className={classes.root}>
       <Container
-        className={classes.container}
+        // className={classes.container}
         className={classes.backgroundImageHero}
       >
-        <Typography color="inherit" align="center" variant="h2" marked="center">
-          Xplore Colorado's Hidden Gems
+        <Typography
+          color="inherit"
+          align="center"
+          variant="h3"
+          marked="center"
+          className={classes.h5}
+        >
+          XPLORE COLORADO'S HIDDEN GEMS
         </Typography>
         <Typography
           color="inherit"
@@ -84,7 +90,7 @@ function HomeHero() {
           align="center"
           className={classes.more}
         >
-          Let's xplore
+          Xplore the unknown
         </Typography>
         <KeyboardArrowDown align="center" className={classes.arrowDown} />
       </Container>

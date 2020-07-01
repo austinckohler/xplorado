@@ -7,11 +7,14 @@ import UserProvider from "./providers/UserProvider";
 import ProfilePage from "./components/ProfilePage";
 import { UserContext } from "./providers/UserProvider";
 import firebase from "firebase/app";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 export default function App() {
   return (
-    <UserProvider>
-      <Application />
-    </UserProvider>
+    <CssBaseline>
+      <UserProvider>
+        <Application />
+      </UserProvider>
+    </CssBaseline>
   );
 }
