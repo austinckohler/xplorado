@@ -35,7 +35,7 @@ function ScrollTop(props) {
 
 function Home(props) {
   return (
-    <Container component="main" maxWidth="xl">
+    <Container component="main" maxWidth="sm">
       <NavBar />
       <HomeHero />
       <ScrollTop {...props}>

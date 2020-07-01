@@ -38,30 +38,20 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   backdrop: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundColor: theme.palette.common.black,
-    opacity: 0.5,
-    zIndex: -1,
-  },
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    zIndex: -2,
     backgroundImage: `url(${underBackground})`,
+    opacity: 0.5,
+    marginTop: "80vh",
+    height: "20vh",
+    width: "100%",
   },
   backgroundImageHero: {
     backgroundImage: `url(${backgroundImage})`,
     backgroundColor: "#7fc7d9", // Average color of the background image.
     backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    zIndex: 1,
+    height: "80vh",
   },
   arrowDown: {
     position: "absolute",
@@ -73,10 +63,14 @@ function HomeHero() {
   const classes = useStyles();
   return (
     <section className={classes.root}>
-      <Container className={classes.container}>
-        <img className={classes.background} />
-        <div className={classes.backdrop} />;
-        <KeyboardArrowDown className={classes.arrowDown} />
+      <Container
+        className={classes.container}
+        className={classes.backgroundImageHero}
+      >
+        <KeyboardArrowDown
+          style={{ display: "flex", alignItems: "center" }}
+          className={classes.arrowDown}
+        />
       </Container>
     </section>
   );
