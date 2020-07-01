@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { auth } from "../firebase";
+import NavBar from "./NavBar";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -57,7 +58,8 @@ export default function PasswordReset() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="sm">
+      <NavBar />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           Forgot your password?

@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    color: "#fff",
   },
   linkButton: {
     color: "#fff",
@@ -23,12 +24,23 @@ function NavBar() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "#696969" }}>
+      <AppBar
+        position="static"
+        style={{ backgroundColor: "#696969" }}
+        maxWidth="sm"
+      >
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            Xplore
-          </Typography>
-          <Link href="signUp" variant="button" className={classes.linkButton}>
+          <Link
+            href="/"
+            variant="h6"
+            className={classes.title}
+            style={{ textDecoration: "none" }}
+          >
+            <Typography variant="h6" className={classes.title}>
+              XploRADo
+            </Typography>
+          </Link>
+          <Link href="signIn" variant="button" className={classes.linkButton}>
             <Typography variant="body2" className={classes.title}>
               Login
             </Typography>

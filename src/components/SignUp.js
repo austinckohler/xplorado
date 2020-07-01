@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { auth, signInWithGoogle, generateUserDocument } from "../firebase";
+import NavBar from "./NavBar";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -67,7 +68,8 @@ export default function SignUp() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="sm">
+      <NavBar />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           Sign Up
@@ -142,7 +144,7 @@ export default function SignUp() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="/" variant="body2">
+              <Link href="signIn" variant="body2">
                 Already have an account? Sign In
               </Link>
             </Grid>

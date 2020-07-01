@@ -22,11 +22,9 @@ export const firestore = firebase.firestore();
 //instance of the google provider object
 // firebase method signInWithPop - uses a popup / we could also use signInWithRedirect - redirecting user to  page
 const provider = new firebase.auth.GoogleAuthProvider();
-export const signInWithGoogle = async () => {
-  return auth.signInWithPopup(provider);
+export const signInWithGoogle = async () => auth.signInWithPopup(provider);
 
-  // auth.signInWithPopup(provider);
-};
+// auth.signInWithPopup(provider);
 
 //returns users data
 export const generateUserDocument = async (user, additionalData) => {

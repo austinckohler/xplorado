@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
+import { Container, Typography } from "@material-ui/core";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 
 const backgroundImage =
@@ -67,10 +67,26 @@ function HomeHero() {
         className={classes.container}
         className={classes.backgroundImageHero}
       >
-        <KeyboardArrowDown
-          style={{ display: "flex", alignItems: "center" }}
-          className={classes.arrowDown}
-        />
+        <Typography color="inherit" align="center" variant="h2" marked="center">
+          Xplore Colorado's Hidden Gems
+        </Typography>
+        <Typography
+          color="inherit"
+          align="center"
+          variant="h5"
+          className={classes.h5}
+        >
+          Enjoy hiking, biking, camping, xploring in solitude crowds?
+        </Typography>
+        <Typography
+          variant="body2"
+          color="inherit"
+          align="center"
+          className={classes.more}
+        >
+          Let's xplore
+        </Typography>
+        <KeyboardArrowDown align="center" className={classes.arrowDown} />
       </Container>
     </section>
   );

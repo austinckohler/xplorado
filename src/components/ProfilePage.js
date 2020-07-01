@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import NavBar from "./NavBar";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,7 +37,8 @@ export default function ProfilePage() {
   console.log(user);
 
   return (
-    <Container>
+    <Container component="main" maxWidth="sm">
+      <NavBar />
       <div
         style={{
           paddingTop: "50px",
