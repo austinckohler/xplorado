@@ -16,10 +16,8 @@ export function AreasProvider(props) {
       .then((retrieveAreas) => setAreas(retrieveAreas));
   };
 
-  const showAreas = areas.map((area) => ({ ...area }));
-
   return (
-    <AreaContext.Provider value={showAreas}>
+    <AreaContext.Provider value={[areas, setAreas]}>
       {props.children}
     </AreaContext.Provider>
   );

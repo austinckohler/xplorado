@@ -15,10 +15,9 @@ export function FacilityProvider(props) {
       .then((response) => response.json())
       .then((retrieveFacilities) => setFacilities(retrieveFacilities));
   };
-  const showFacilities = facilities.map((facility) => ({ ...facility }));
 
   return (
-    <FacilityContext.Provider value={showFacilities}>
+    <FacilityContext.Provider value={[facilities, setFacilities]}>
       {props.children}
     </FacilityContext.Provider>
   );

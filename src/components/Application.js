@@ -7,7 +7,7 @@ import ProfilePage from "./ProfilePage";
 import { UserContext } from "../providers/UserProvider";
 import PasswordReset from "./PasswordReset";
 import Home from "./Home";
-import RecList from "./RecList";
+import MainMap from "./MainMap";
 // will render either the sign-in/sign-up routes or the profile page, depending on whether the user has been signed into the application
 
 export default function Application() {
@@ -17,7 +17,7 @@ export default function Application() {
   ) : (
     <Router>
       <Home path="/" />
-      <RecList path="map" />
+      <MainMap path="map" />
       <SignUp path="signUp" />
       <SignIn path="signIn" />
       <PasswordReset path="passwordReset" />
