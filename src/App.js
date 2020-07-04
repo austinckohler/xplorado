@@ -1,20 +1,20 @@
 import React, { useContext } from "react";
-import { Router } from "@reach/router";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
 import Application from "./components/Application";
 import UserProvider from "./providers/UserProvider";
-import ProfilePage from "./components/ProfilePage";
-import { UserContext } from "./providers/UserProvider";
-import firebase from "firebase/app";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { AreasProvider } from "./providers/AreasProvider";
+import { FacilityProvider } from "./providers/FacilityProvider";
 
 export default function App() {
   return (
     <CssBaseline>
-      <UserProvider>
-        <Application />
-      </UserProvider>
+      <AreasProvider>
+        <FacilityProvider>
+          <UserProvider>
+            <Application />
+          </UserProvider>
+        </FacilityProvider>
+      </AreasProvider>
     </CssBaseline>
   );
 }

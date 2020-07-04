@@ -35,12 +35,13 @@ export const generateUserDocument = async (user, additionalData) => {
   const snapshot = await userRef.get();
   //checking to see of there is data referenced. if not we write data to the document.
   if (!snapshot.exists) {
-    const { email, displayName, photoURL } = user;
+    const { email, displayName, saved, photoURL } = user;
     try {
       await userRef.set({
         displayName,
         email,
         photoURL,
+        saved,
         ...additionalData,
       });
     } catch (error) {

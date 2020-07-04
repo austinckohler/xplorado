@@ -33,7 +33,7 @@ export default function ProfilePage() {
   const classes = useStyles();
 
   const user = useContext(UserContext);
-  const { photoURL, displayName, email } = user;
+  const { photoURL, displayName, saved, email } = user;
   console.log(user);
 
   return (
@@ -57,6 +57,9 @@ export default function ProfilePage() {
         </Typography>
         <Typography component="h3" variant="h5">
           {email}
+        </Typography>
+        <Typography component="h3" variant="h5">
+          {saved}
         </Typography>
       </div>
       <Button

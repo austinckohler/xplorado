@@ -92,7 +92,7 @@ function HomeHero() {
         >
           Xplore the unknown
         </Typography>
-        <KeyboardArrowDown align="center" className={classes.arrowDown} />
+        <KeyboardArrowDown className={classes.arrowDown} />
       </Container>
     </section>
   );

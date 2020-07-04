@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link, Toolbar, Typography, AppBar } from "@material-ui/core";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +27,6 @@ function NavBar() {
         position="static"
         style={{ backgroundColor: "rgba(32, 32, 39, 0.97)" }}
         maxWidth="sm"
-        elevation="4"
       >
         <Toolbar>
           <Link
@@ -39,6 +37,11 @@ function NavBar() {
           >
             <Typography variant="h6" className={classes.title}>
               Xplorado
+            </Typography>
+          </Link>
+          <Link href="map" variant="button" className={classes.linkButton}>
+            <Typography variant="body2" className={classes.title}>
+              Map
             </Typography>
           </Link>
           <Link href="signIn" variant="button" className={classes.linkButton}>

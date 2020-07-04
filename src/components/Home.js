@@ -3,6 +3,7 @@ import { Container, useScrollTrigger, Fab, Zoom } from "@material-ui/core";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import NavBar from "./NavBar";
 import HomeHero from "./HomeHero";
+import RecList from "./RecList";
 
 function ScrollTop(props) {
   const { children } = props;
@@ -39,6 +40,7 @@ function Home(props) {
       {/* // <Container component="main" maxWidth="sm"> */}
       <NavBar />
       <HomeHero />
+      <RecList />
       <ScrollTop {...props}>
         <Fab
           style={{ color: "yellow" }}
