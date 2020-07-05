@@ -10,7 +10,6 @@ import Button from "@material-ui/core/Button";
 // import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import NavBar from "./NavBar";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,13 +32,13 @@ export default function ProfilePage() {
   const classes = useStyles();
 
   const user = useContext(UserContext);
-  const { photoURL, displayName, saved, email } = user;
+  const { photoURL, displayName, email } = user;
   console.log(user);
 
   return (
-    <Container component="main" maxWidth="sm">
+    <>
       <NavBar />
-      <div
+      <header
         style={{
           paddingTop: "50px",
           background: `url(${
@@ -47,33 +46,31 @@ export default function ProfilePage() {
             "https://images.unsplash.com/photo-1591189327425-aa5f21c7ab2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"
           }) no-repeat center center`,
           // backgroundSize: "cover",
-          height: "200px",
+          height: "20vh",
           width: '200px"',
         }}
-      ></div>
-      <div>
+      />
+
+      <main>
         <Typography component="h2" variant="h5">
           {displayName}
         </Typography>
         <Typography component="h3" variant="h5">
           {email}
         </Typography>
-        <Typography component="h3" variant="h5">
-          {saved}
-        </Typography>
-      </div>
-      <Button
-        type="submit"
-        fullWidth
-        variant="contained"
-        color="primary"
-        className={classes.submit}
-        onClick={() => {
-          auth.signOut();
-        }}
-      >
-        Sign Out
-      </Button>
-    </Container>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+          onClick={() => {
+            auth.signOut();
+          }}
+        >
+          Sign Out
+        </Button>
+      </main>
+    </>
   );
 }

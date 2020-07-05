@@ -26,7 +26,6 @@ function NavBar() {
       <AppBar
         position="static"
         style={{ backgroundColor: "rgba(32, 32, 39, 0.97)" }}
-        maxWidth="sm"
       >
         <Toolbar>
           <Link
@@ -42,6 +41,15 @@ function NavBar() {
           <Link href="map" variant="button" className={classes.linkButton}>
             <Typography variant="body2" className={classes.title}>
               Map
+            </Typography>
+          </Link>
+          <Link
+            href="facilityList"
+            variant="button"
+            className={classes.linkButton}
+          >
+            <Typography variant="body2" className={classes.title}>
+              F
             </Typography>
           </Link>
           <Link href="signIn" variant="button" className={classes.linkButton}>

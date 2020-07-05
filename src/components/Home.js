@@ -1,47 +1,28 @@
-import React from "react";
-import { Container, useScrollTrigger, Fab, Zoom } from "@material-ui/core";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+// import { useScrollTrigger, Fab, Zoom } from "@material-ui/core";
+// import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import NavBar from "./NavBar";
 import HomeHero from "./HomeHero";
-import MainMap from "./MainMap";
+// import MainMap from "./MainMap";
+import FacilityList from "../containers/FacilityList";
+import AreaList from "../containers/AreaList";
 
-function ScrollTop(props) {
-  const { children } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
-  const trigger = useScrollTrigger({
-    target: undefined,
-    disableHysteresis: true,
-    threshold: 100,
-  });
-
-  const handleClick = (event) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(
-      "#back-to-top-anchor"
-    );
-
-    if (anchor) {
-      anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  };
-  return (
-    <Zoom in={trigger}>
-      <div onClick={handleClick} role="presentation">
-        {children}
-      </div>
-    </Zoom>
-  );
-}
+import React from "react";
 
 function Home(props) {
   return (
     <>
-      {/* // <Container component="main" maxWidth="sm"> */}
       <NavBar />
       <HomeHero />
-      <MainMap />
-      <ScrollTop {...props}>
+      {/* <MainMap /> */}
+      <AreaList />
+      <FacilityList />
+    </>
+  );
+}
+
+export default Home;
+{
+  /* <ScrollTop {...props}>
         <Fab
           style={{ color: "yellow" }}
           size="small"
@@ -49,10 +30,34 @@ function Home(props) {
         >
           <KeyboardArrowUpIcon />
         </Fab>
-      </ScrollTop>
-      {/* // </Container> */}
-    </>
-  );
+      </ScrollTop> */
 }
+//       {/* // </Container> */}function ScrollTop(props) {
+//   const { children } = props;
+//   // Note that you normally won't need to set the window ref as useScrollTrigger
+//   // will default to window.
+//   // This is only being set here because the demo is in an iframe.
+//   const trigger = useScrollTrigger({
+//     target: undefined,
+//     disableHysteresis: true,
+//     threshold: 100,
+//   });
 
-export default Home;
+//   const handleClick = (event) => {
+//     const anchor = (event.target.ownerDocument || document).querySelector(
+//       "#back-to-top-anchor"
+//     );
+
+//     if (anchor) {
+//       anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+//     }
+//   };
+
+//   return (
+//     <Zoom in={trigger}>
+//       <div onClick={handleClick} role="presentation">
+//         {children}
+//       </div>
+//     </Zoom>
+//   );
+// }

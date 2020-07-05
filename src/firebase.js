@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import "firebase/auth";
 import "firebase/firestore";
-import { functions } from "firebase";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD4AC1T_YVYpWZ4PIqVS9VnF8RoOXoHDrg",
@@ -16,13 +16,31 @@ const firebaseConfig = {
 //initializes firebase application, authentication and cloud storage
 firebase.initializeApp(firebaseConfig);
 
+export const uiConfig = {
+  signInFlow: "popup",
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+  ],
+  callbacks: {
+    signInSuccess: () => false,
+  },
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 //instance of the google provider object
 // firebase method signInWithPop - uses a popup / we could also use signInWithRedirect - redirecting user to  page
-const provider = new firebase.auth.GoogleAuthProvider();
-export const signInWithGoogle = async () => auth.signInWithPopup(provider);
+let provider = new firebase.auth.GoogleAuthProvider();
+export const signInWithGoogle = async () =>
+  auth
+    .signInWithPopup(provider)
+    .then((result) => {
+      console.log(`logged in as ${result.user.displayName}`);
+    })
+    .catch((error) => console.error(error.message));
 
 // auth.signInWithPopup(provider);
 
@@ -35,13 +53,12 @@ export const generateUserDocument = async (user, additionalData) => {
   const snapshot = await userRef.get();
   //checking to see of there is data referenced. if not we write data to the document.
   if (!snapshot.exists) {
-    const { email, displayName, saved, photoURL } = user;
+    const { email, displayName, photoURL } = user;
     try {
       await userRef.set({
         displayName,
         email,
         photoURL,
-        saved,
         ...additionalData,
       });
     } catch (error) {

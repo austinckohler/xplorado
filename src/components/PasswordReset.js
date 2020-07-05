@@ -1,6 +1,5 @@
 // allows the user to reset their password in the event they lose or forget it
-import React, { useState, useContext } from "react";
-import { UserContext } from "../providers/UserProvider";
+import React, { useState } from "react";
 import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";

@@ -1,18 +1,31 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { FacilityContext } from "../providers/FacilityProvider";
+// import MainMap from "../components/MainMap";
+// import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Facility from "../components/Facility";
+import NavBar from "../components/NavBar";
 
-export default function FacilityList() {
+// const useStyles = makeStyles((theme) => ({
+//   typography: {
+//     margin: theme.spacing(2),
+//   },
+// }));
+
+export default function FacilityList(props) {
+  //   const classes = useStyles();
   const [facilities, setFacilities] = useContext(FacilityContext);
   const facilityInfo = facilities.map((facility) => (
-    <section>
-      <h1 name={facility.name} />
-      <p description={facility.description} />
-      <p directions={facility.directions} />
-      <ul>
-        <li coords={facility.lat && facility.long} />
-      </ul>
-      <p updated={("Last Updated: ", facility.lastUpdated)} />
-    </section>
+    <Facility
+      key={facility.id}
+      name={facility.name}
+      description={facility.description}
+      directions={facility.directions}
+      lat={facility.lat}
+      long={facility.long}
+      updated={facility.lastUpdated}
+    />
   ));
+  //   console.log("drill", facilityInfo);
   return <>{facilityInfo}</>;
 }

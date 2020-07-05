@@ -1,13 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import { auth, signInWithGoogle, generateUserDocument } from "../firebase";
+// import Container from "@material-ui/core/Container";
+import { auth, uiConfig, generateUserDocument } from "../firebase";
 import NavBar from "./NavBar";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import firebase from "firebase/app";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -68,7 +70,7 @@ export default function SignUp() {
   };
 
   return (
-    <Container component="main" maxWidth="sm">
+    <>
       <NavBar />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
@@ -126,7 +128,11 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          <Button
+          <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+          {/* <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -141,7 +147,7 @@ export default function SignUp() {
             }}
           >
             Sign in with Google
-          </Button>
+          </Button> */}
           <Grid container>
             <Grid item xs>
               <Link href="signIn" variant="body2">
@@ -151,6 +157,6 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-    </Container>
+    </>
   );
 }
