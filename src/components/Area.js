@@ -14,28 +14,68 @@ function Area({
 }) {
   const [areas, setAreas] = useContext(AreaContext);
   return (
-    <div style={{ borderBottom: "1px dashed ", marginBottom: "5px" }}>
+    <div
+      style={{
+        borderBottom: "1px dashed ",
+        marginBottom: "5px",
+        padding: "2rem",
+        margin: "auto",
+      }}
+    >
       <h1>{name}</h1>
+      <h3>Description:</h3>
       <p dangerouslySetInnerHTML={{ __html: description }}></p>
-      <p>{directions}</p>
+      <p> Last Updated: {updated}</p>
+      <h3>Directions:</h3>
       <p>
-        {lat !== 0 && long !== 0 ? (
-          <p style={{ textAlign: "center" }}>
-            Coordinates: {lat}, {long}
-          </p>
+        {directions !== "" ? (
+          <p dangerouslySetInnerHTML={{ __html: directions }}></p>
         ) : (
-          <p>Coordinates: No coordinates for {name}</p>
+          <p>Sorry, we could't find there any directions to {name}</p>
         )}
       </p>
-      {/* <p>
-        {lat !== 0 && long !== 0 ? (
-          <p style={{ textAlign: "center" }}>
-            Latitude: {lat}, Longitude: {long}
-          </p>
-        ) : (
-          <p>There are no coordinates for {name}</p>
-        )}
-      </p> */}
+      <p>
+        {directions === "" && email !== "" ? (
+          <p>Try contacting the recreation area by email {email}</p>
+        ) : null}
+      </p>
+      {phone !== {} || "" || ":" ? (
+        <h4 style={{ display: "inline" }}>
+          Phone:
+          <span style={{ fontWeight: "normal" }}>{phone}</span>
+        </h4>
+      ) : null}
+      <br></br>
+      {email !== "" ? (
+        <h4 style={{ display: "inline" }}>
+          Email:
+          <span style={{ fontWeight: "normal" }}>{email}</span>
+        </h4>
+      ) : null}
+      <h3>
+        Coordinates:
+        <span>
+          {lat !== 0 && long !== 0 ? (
+            <span style={{ fontWeight: "normal", fontSize: "small" }}>
+              {lat}, {long}
+            </span>
+          ) : (
+            <span style={{ fontWeight: "normal", fontSize: "small" }}>
+              Sorry, we don't have coordinates for {name}
+            </span>
+          )}
+        </span>
+      </h3>
+      {map !== "" ? (
+        <h3>
+          Map:
+          <a
+            href={map}
+            style={{ fontWeight: "normal", fontSize: "small" }}
+            dangerouslySetInnerHTML={{ __html: map }}
+          ></a>
+        </h3>
+      ) : null}
     </div>
   );
 }
