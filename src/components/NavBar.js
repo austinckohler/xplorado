@@ -43,15 +43,11 @@ function NavBar() {
               Map
             </Typography>
           </Link>
-          <Link
-            href="facilityList"
-            variant="button"
-            className={classes.linkButton}
-          >
+          {/* <Link href="facility" variant="button" className={classes.linkButton}>
             <Typography variant="body2" className={classes.title}>
-              F
+              Facility
             </Typography>
-          </Link>
+          </Link> */}
           <Link href="signIn" variant="button" className={classes.linkButton}>
             <Typography variant="body2" className={classes.title}>
               Login

@@ -2,20 +2,20 @@
 // import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import NavBar from "./NavBar";
 import HomeHero from "./HomeHero";
-// import MainMap from "./MainMap";
+import MainMap from "./MainMap";
 import FacilityList from "../containers/FacilityList";
 import AreaList from "../containers/AreaList";
 
 import React from "react";
 
-function Home(props) {
+function Home() {
   return (
     <>
       <NavBar />
       <HomeHero />
       {/* <MainMap /> */}
-      <AreaList />
-      <FacilityList />
+      {/* <AreaList /> */}
+      {/* <FacilityList /> */}
     </>
   );
 }

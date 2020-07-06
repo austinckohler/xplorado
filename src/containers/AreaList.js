@@ -19,6 +19,6 @@ export default function AreaList() {
       updated={area.lastUpdated}
     />
   ));
-  //   console.log("drill", facilityInfo);
+
   return <>{areaInfo}</>;
 }

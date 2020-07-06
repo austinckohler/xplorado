@@ -7,11 +7,15 @@ function Facility({ name, description, directions, lat, long, updated }) {
       <p>{description}</p>
       <p>{directions}</p>
       {/* need conditional for lat and long so it doesn't show 0 */}
-      {/* {lat !== 0},{long !== 0} ? (
-      <p style={{ textAlign: "center" }}>
-        Latitude: {lat}, Longitude: {long}
-      </p>{" "}
-      ) : (<p> There are no coordinates for {name}</p>) */}
+      <p>
+        {lat !== 0 && long !== 0 ? (
+          <p style={{ textAlign: "center" }}>
+            Coordinates: {lat}, {long}
+          </p>
+        ) : (
+          <p>Coordinates: No coordinates for {name}</p>
+        )}
+      </p>
       <p>Last updated date: {updated}</p>
     </div>
   );

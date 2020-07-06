@@ -26,6 +26,5 @@ export default function FacilityList(props) {
       updated={facility.lastUpdated}
     />
   ));
-  //   console.log("drill", facilityInfo);
   return <>{facilityInfo}</>;
 }

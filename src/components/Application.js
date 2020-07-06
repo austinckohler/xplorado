@@ -10,9 +10,10 @@ import MainMap from "./MainMap";
 import FacilityList from "./Facility";
 import { FacilityProvider } from "../providers/FacilityProvider";
 import AreaList from "../containers/AreaList";
+import Facility from "./Facility";
 // will render either the sign-in/sign-up routes or the profile page, depending on whether the user has been signed into the application
 
-export default function Application() {
+export default function Application(props) {
   const user = useContext(UserContext);
   return user ? (
     <ProfilePage />
@@ -20,7 +21,7 @@ export default function Application() {
     <Router>
       <Home path="/" />
       <MainMap path="map" />
-      <FacilityList path="facilityList" />
+      <Facility path="facility" />
       <SignUp path="signUp" />
       <SignIn path="signIn" />
       <PasswordReset path="passwordReset" />
