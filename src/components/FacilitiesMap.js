@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,8 +6,8 @@ import NavBar from "./NavBar";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import FacilityList from "../containers/FacilityList";
-import { FacilityContext } from "../providers/FacilityProvider";
 import { campCoord } from "./data/FacilityData";
+import { Link, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   mapContainer: {
@@ -30,7 +30,6 @@ let center = [38.998, -105.641];
 
 function FacilitiesMap(props) {
   const classes = useStyles();
-  const [facilities, setFacilities] = useContext(FacilityContext);
   const [activeFacility, setActiveFacility] = useState(null);
 
   return (
@@ -61,15 +60,12 @@ function FacilitiesMap(props) {
             }}
           >
             <div>
-              <h4>{activeFacility.name}</h4>
+              <Typography variant="h4">{activeFacility.name}</Typography>
             </div>
           </Popup>
         )}
       </Map>
-      {/* <Marker position={center} >
-          <Popup position={center}>This is the pop up test</Popup>
-        </Marker>
-      </Map> */}
+
       <FacilityList />
     </>
   );
