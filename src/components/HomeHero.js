@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     zIndex: 1,
-    height: "100vh",
+    height: "93.4vh",
   },
 }));
 
