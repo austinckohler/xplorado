@@ -7,10 +7,6 @@ import { UserContext } from "../providers/UserProvider";
 import PasswordReset from "./PasswordReset";
 import Home from "./Home";
 import AreasMap from "./AreasMap";
-import FacilityList from "./Facility";
-import { FacilityProvider } from "../providers/FacilityProvider";
-import AreaList from "../containers/AreaList";
-import Facility from "./Facility";
 import FacilitiesMap from "./FacilitiesMap";
 // will render either the sign-in/sign-up routes or the profile page, depending on whether the user has been signed into the application
 

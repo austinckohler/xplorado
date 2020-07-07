@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Typography } from "@material-ui/core";
+import { Typography, Link, Grid } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -16,10 +16,10 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
+    transition: "0.2s",
+    "&:hover": {
+      transform: "scale(1.1)",
+    },
   },
   expand: {
     transform: "rotate(0deg)",
@@ -33,46 +33,68 @@ const useStyles = makeStyles((theme) => ({
 function Facility({ name, description, directions, lat, long, updated }) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
+  const [color, setColor] = useState("grey");
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  return (
-    <Card className={classes.root}>
-      <CardHeader title={name} />
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon>{/* <Link >Add to Favorites</Link> */}</FavoriteIcon>
-        </IconButton>
+  const handleFavorite = (event) => {
+    setColor(event.target.clicked ? "pink" : "grey");
+  };
 
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="Explore More"
-        >
-          <Typography
-            align="right"
-            variant="body2"
-            style={{ padding: ".1rem" }}
-          >
-            Learn more...
-          </Typography>
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography
-            component="body"
-            dangerouslySetInnerHTML={{ __html: description }}
-          ></Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
+  return (
+    <Grid container spacing={9}>
+      <Grid
+        item
+        xs={6}
+        sm={6}
+        md={6}
+        lg={6}
+        xl={6}
+        direction="row"
+        justify="center"
+        alignItems="center"
+      >
+        <Card className={classes.root}>
+          <CardHeader title={name} />
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites" onClick={handleFavorite}>
+              <FavoriteIcon clicked={color === "pink"}>
+                {/* <Link >Add to Favorites</Link> */}
+              </FavoriteIcon>
+            </IconButton>
+
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="Explore More"
+            >
+              <Typography
+                align="right"
+                variant="body2"
+                style={{ padding: ".1rem" }}
+              >
+                Learn more...
+              </Typography>
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography
+                component="body"
+                dangerouslySetInnerHTML={{ __html: description }}
+              ></Typography>
+            </CardContent>
+          </Collapse>
+        </Card>
+      </Grid>
+    </Grid>
+
     //     <div
     //       style={{
     //         borderBottom: "1px dashed ",

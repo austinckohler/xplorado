@@ -1,16 +1,13 @@
-// will display the user’s display name, email, and profile picture or a placeholder image if they are signing in via email/password
-
 //useContext hook was used to get current value of UserContext and grabbed the pertainent data.
 import React, { useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { auth } from "../firebase";
 import Button from "@material-ui/core/Button";
-// import TextField from '@material-ui/core/TextField';
-// import Link from '@material-ui/core/Link';
-// import Grid from '@material-ui/core/Grid';
+
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
+import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -51,18 +48,18 @@ export default function ProfilePage() {
         }}
       />
 
-      <main>
-        <Typography component="h2" variant="h5">
+      <Container width="md">
+        <Typography component="h2" variant="h5" align="center">
           {displayName}
         </Typography>
-        <Typography component="h3" variant="h5">
+        <Typography component="h3" variant="h5" align="center">
           {email}
         </Typography>
         <Button
           type="submit"
-          fullWidth
           variant="contained"
           color="primary"
+          alignItems="center"
           className={classes.submit}
           onClick={() => {
             auth.signOut();
@@ -70,7 +67,7 @@ export default function ProfilePage() {
         >
           Sign Out
         </Button>
-      </main>
+      </Container>
     </>
   );
 }
