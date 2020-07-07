@@ -59,10 +59,14 @@ export default function SignIn() {
           Sign in
         </Typography>
         <div>{error !== null && <div>{error}</div>}</div>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          noValidate
+          style={{ maxWidth: "1024px" }}
+        >
           <TextField
             variant="outlined"
-            margin="normal"
+            margin="dense"
             required
             fullWidth
             id="userEmail"

@@ -1,22 +1,44 @@
 import React from "react";
+import { Typography } from "@material-ui/core";
 
 function Facility({ name, description, directions, lat, long, updated }) {
   return (
-    <div style={{ borderBottom: "1px dashed ", marginBottom: "5px" }}>
-      <h1>{name}</h1>
-      <p>{description}</p>
-      <p>{directions}</p>
-      {/* need conditional for lat and long so it doesn't show 0 */}
+    <div
+      style={{
+        borderBottom: "1px dashed ",
+        marginBottom: "5px",
+        padding: "2rem",
+        margin: "auto",
+      }}
+    >
+      <Typography component="h1" variant="h5" style={{ fontWeight: "bold" }}>
+        {name}
+      </Typography>
+      <h3>Description:</h3>
+      <p dangerouslySetInnerHTML={{ __html: description }}></p>
       <p>
-        {lat !== 0 && long !== 0 ? (
-          <p style={{ textAlign: "center" }}>
-            Coordinates: {lat}, {long}
-          </p>
-        ) : (
-          <p>Coordinates: No coordinates for {name}</p>
-        )}
+        <strong>Last Updated: </strong>
+        {updated}
       </p>
-      <p>Last updated date: {updated}</p>
+      <h3>Directions:</h3>
+      {directions !== "" ? (
+        <p dangerouslySetInnerHTML={{ __html: directions }}></p>
+      ) : (
+        <span>Sorry, directions to {name} are unknown.</span>
+      )}
+      <p>
+        <strong>Coordinates: </strong>
+        <span>
+          {lat !== 0 && long !== 0 ? (
+            <span>
+              {/* <MarkerData lat={lat} long={long} /> */}
+              {lat}, {long}
+            </span>
+          ) : (
+            <span>Sorry, coordinates for {name} were not found.</span>
+          )}
+        </span>
+      </p>
     </div>
   );
 }

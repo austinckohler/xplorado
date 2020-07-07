@@ -25,7 +25,7 @@ function NavBar() {
     <div className={classes.root}>
       <AppBar
         position="static"
-        style={{ backgroundColor: "rgba(32, 32, 39, 0.97)" }}
+        style={{ backgroundColor: "rgba(32, 32, 39, 0.95)" }}
       >
         <Toolbar>
           <Link
@@ -38,9 +38,18 @@ function NavBar() {
               Xplorado
             </Typography>
           </Link>
-          <Link href="map" variant="button" className={classes.linkButton}>
+          <Link href="areasMap" variant="button" className={classes.linkButton}>
             <Typography variant="body2" className={classes.title}>
-              Map
+              Recreation Areas
+            </Typography>
+          </Link>
+          <Link
+            href="facilitiesMap"
+            variant="button"
+            className={classes.linkButton}
+          >
+            <Typography variant="body2" className={classes.title}>
+              Dispersed Camping
             </Typography>
           </Link>
           {/* <Link href="facility" variant="button" className={classes.linkButton}>

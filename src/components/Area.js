@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AreaContext } from "../providers/AreasProvider";
+import { Typography } from "@material-ui/core";
 
 function Area({
   name,
@@ -22,7 +23,9 @@ function Area({
         margin: "auto",
       }}
     >
-      <h1>{name}</h1>
+      <Typography component="h1" variant="h5" style={{ fontWeight: "bold" }}>
+        {name}
+      </Typography>
       <h3>Description:</h3>
       <p dangerouslySetInnerHTML={{ __html: description }}></p>
       <p> Last Updated: {updated}</p>

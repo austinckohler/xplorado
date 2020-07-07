@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
-import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { AreaContext } from "../providers/AreasProvider";
 import AreaList from "../containers/AreaList";
-// import FacilityList from "../containers/FacilityList";
-import Facility from "../components/Facility";
+import Facility from "./Facility";
 import NavBar from "./NavBar";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
+
+import { Coordinates } from "./data/AreaData";
 
 const useStyles = makeStyles((theme) => ({
   mapContainer: {
@@ -30,62 +30,44 @@ const defaultIcon = new Icon({
 
 let center = [38.998, -105.641];
 
-function MainMap(props) {
+function AreasMap(props) {
   const classes = useStyles();
   const [areas, setAreas] = useContext(AreaContext);
   const [activeArea, setActiveArea] = useState(null);
 
-  // let area = areas.forEach((area) => {
-  //   return console.log(area);
-  // });
-  // let id = areas.forEach((area) => {
-  //   return area.id;
-  // });
-  // let name = areas.forEach((area) => {
-  //   return area.name;
-  // });
-
-  // let lat = areas.forEach((area) => {
-  //   return console.log(area.lat);
-  //   // !== 0 ? area.lat : 39.739;
-  // });
-  // let long = areas.forEach((area) => {
-  //   return area.long;
-  //   // !== 0 ? area.long : -104.99;
-  // });
-
   return (
     <>
       <NavBar />
-      <Map center={center} zoom={6} className="map">
+      <Map center={center} zoom={7} className="map">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        {areas.forEach((area) => {
-          return (
-            <Marker
-              key={area.id}
-              position={console.log(area.lat, area.long)}
-              // onclick={() => {
-              //   setActiveArea(console.log(area));
-              // }}
-              icon={defaultIcon}
-            />
-          );
-        })}
-        {/* {activeArea && (
+
+        {Coordinates.map((area) => (
+          <Marker
+            key={area.id}
+            position={[area.lat, area.long]}
+            onclick={() => {
+              setActiveArea(area);
+            }}
+            icon={defaultIcon}
+          />
+        ))}
+
+        {activeArea && (
           <Popup
-            position={console.log(activeArea.lat, activeArea.long)}
+            key={activeArea.id}
+            position={[activeArea.lat, activeArea.long]}
             onClose={() => {
               setActiveArea(null);
             }}
           >
             <div>
-              <h1> Recreation Area: {activeArea.name}</h1>
+              <h4>{activeArea.name}</h4>
             </div>
           </Popup>
-        )} */}
+        )}
       </Map>
       {/* <Marker position={center} >
           <Popup position={center}>This is the pop up test</Popup>
@@ -96,4 +78,4 @@ function MainMap(props) {
   );
 }
 
-export default MainMap;
+export default AreasMap;
