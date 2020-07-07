@@ -7,12 +7,16 @@ import FacilityList from "../containers/FacilityList";
 import AreaList from "../containers/AreaList";
 
 import React from "react";
+import { CssBaseline } from "@material-ui/core";
 
 function Home() {
   return (
     <>
-      <NavBar />
-      <HomeHero />
+      <CssBaseline>
+        <NavBar />
+        <HomeHero />
+      </CssBaseline>
+
       {/* <MainMap /> */}
       {/* <AreaList /> */}
       {/* <FacilityList /> */}
