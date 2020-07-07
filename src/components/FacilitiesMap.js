@@ -7,7 +7,7 @@ import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import FacilityList from "../containers/FacilityList";
 import { campCoord } from "./data/FacilityData";
-import { Link, Typography } from "@material-ui/core";
+import { Link, Typography, Grid, CssBaseline } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   mapContainer: {
@@ -15,6 +15,14 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  root: {
+    height: "100vh",
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    color: theme.palette.text.secondary,
   },
 }));
 const defaultIcon = new Icon({
@@ -35,38 +43,69 @@ function FacilitiesMap(props) {
   return (
     <>
       <NavBar />
-      <Map center={center} zoom={7} className="map">
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-        {campCoord.map((facility) => (
-          <Marker
-            key={facility.id}
-            position={[facility.lat, facility.long]}
-            onclick={() => {
-              setActiveFacility(facility);
-            }}
-            icon={defaultIcon}
-          />
-        ))}
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={6}
+          sm={6}
+          md={6}
+          lg={6}
+          xl={6}
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.root}
+        >
+          <Map center={center} zoom={7} className="map">
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+            {campCoord.map((facility) => (
+              <Marker
+                key={facility.id}
+                position={[facility.lat, facility.long]}
+                onclick={() => {
+                  setActiveFacility(facility);
+                }}
+                icon={defaultIcon}
+              />
+            ))}
 
-        {activeFacility && (
-          <Popup
-            key={activeFacility.id}
-            position={[activeFacility.lat, activeFacility.long]}
-            onClose={() => {
-              setActiveFacility(null);
-            }}
-          >
-            <div>
-              <Typography variant="h4">{activeFacility.name}</Typography>
-            </div>
-          </Popup>
-        )}
-      </Map>
+            {activeFacility && (
+              <Popup
+                key={activeFacility.id}
+                position={[activeFacility.lat, activeFacility.long]}
+                onClose={() => {
+                  setActiveFacility(null);
+                }}
+              >
+                <div>
+                  <Typography variant="body">{activeFacility.name}</Typography>
+                </div>
+              </Popup>
+            )}
+          </Map>
+        </Grid>
 
-      <FacilityList />
+        <Grid
+          item
+          xs={6}
+          sm={6}
+          md={6}
+          lg={6}
+          xl={6}
+          direction="row"
+          justify="center"
+          alignItems="center"
+          elevation={6}
+        >
+          <div className={classes.paper}>
+            <FacilityList />
+          </div>
+        </Grid>
+      </Grid>
     </>
   );
 }
