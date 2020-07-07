@@ -7,6 +7,7 @@ import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import FacilityList from "../containers/FacilityList";
 import { FacilityContext } from "../providers/FacilityProvider";
+import { campCoord } from "./data/FacilityData";
 
 const useStyles = makeStyles((theme) => ({
   mapContainer: {
@@ -32,57 +33,38 @@ function FacilitiesMap(props) {
   const [facilities, setFacilities] = useContext(FacilityContext);
   const [activeFacility, setActiveFacility] = useState(null);
 
-  // let area = areas.forEach((area) => {
-  //   return console.log(area);
-  // });
-  // let id = areas.forEach((area) => {
-  //   return area.id;
-  // });
-  // let name = areas.forEach((area) => {
-  //   return area.name;
-  // });
-
-  // let lat = areas.forEach((area) => {
-  //   return console.log(area.lat);
-  //   // !== 0 ? area.lat : 39.739;
-  // });
-  // let long = areas.forEach((area) => {
-  //   return area.long;
-  //   // !== 0 ? area.long : -104.99;
-  // });
-
   return (
     <>
       <NavBar />
-      <Map center={center} zoom={6} className="map">
+      <Map center={center} zoom={7} className="map">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        {facilities.forEach((facility) => {
-          return (
-            <Marker
-              key={facility.id}
-              position={console.log(facility.lat, facility.long)}
-              // onclick={() => {
-              //   setActiveArea(console.log(area));
-              // }}
-              icon={defaultIcon}
-            />
-          );
-        })}
-        {/* {activeArea && (
+        {campCoord.map((facility) => (
+          <Marker
+            key={facility.id}
+            position={[facility.lat, facility.long]}
+            onclick={() => {
+              setActiveFacility(facility);
+            }}
+            icon={defaultIcon}
+          />
+        ))}
+
+        {activeFacility && (
           <Popup
-            position={console.log(activeArea.lat, activeArea.long)}
+            key={activeFacility.id}
+            position={[activeFacility.lat, activeFacility.long]}
             onClose={() => {
-              setActiveArea(null);
+              setActiveFacility(null);
             }}
           >
             <div>
-              <h1> Recreation Area: {activeArea.name}</h1>
+              <h4>{activeFacility.name}</h4>
             </div>
           </Popup>
-        )} */}
+        )}
       </Map>
       {/* <Marker position={center} >
           <Popup position={center}>This is the pop up test</Popup>

@@ -2,83 +2,80 @@ export const campCoord = [
   {
     id: 1,
     name: "CDNST - Deep Jack Trailhead",
-
     long: -107.1166255,
     lat: 41.24516225,
   },
   {
     id: 2,
     name: "CLRD Dispersed camping",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 3,
     name: "Storm Mountain Road (#153)",
-
     long: -105.36861667,
     lat: 40.47445,
   },
   {
     id: 4,
     name: "La Fair #668",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 5,
     name: "Dispersed Camping Regulations for Leadville RD",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 6,
     name: "Platte River Wilderness",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 7,
     name: "Clear Creek Canyon",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 8,
     name: "Buffalo Pass",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 9,
     name: "Todd Reservoir Tie-In #896",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 10,
     name: "Laramie Peak Area",
-
     long: -105.48568,
     lat: 42.2558,
   },
   {
     id: 11,
     name: "Adams Fork Trailhead, Trail 713",
-
     long: -106.6002516,
     lat: 37.32150564,
   },
   {
     id: 12,
     name: "Red Dirt Reservoir Recreation Area",
-
     long: -106.57576,
     lat: 40.1789,
   },
   {
     id: 13,
     name: "Chama Basin Trailhead # 738",
+    long: -106.5533922,
+    lat: 37.03497326,
   },
   {
     id: 14,
@@ -111,8 +108,8 @@ export const campCoord = [
   {
     id: 18,
     name: "Mount Zirkel Wilderness",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 19,
@@ -131,8 +128,8 @@ export const campCoord = [
   {
     id: 21,
     name: "Todd Reservoir Jeep #891",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 22,
@@ -151,8 +148,8 @@ export const campCoord = [
   {
     id: 24,
     name: "Turquoise Lake Recreation Area",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 25,
@@ -176,8 +173,8 @@ export const campCoord = [
   },
   {
     id: 28,
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 29,
@@ -196,8 +193,8 @@ export const campCoord = [
   {
     id: 31,
     name: "Buford-New Castle Road (Forest Road-245)",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 32,
@@ -321,8 +318,8 @@ export const campCoord = [
   {
     id: 49,
     name: "Thunder Basin National Grassland",
-    long: [],
-    lat: [],
+    long: 39.739,
+    lat: -104.984,
   },
   {
     id: 50,
