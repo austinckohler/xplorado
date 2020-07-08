@@ -10,6 +10,7 @@ import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 
 import { Coordinates } from "./data/AreaData";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   mapContainer: {
@@ -37,43 +38,45 @@ function AreasMap(props) {
 
   return (
     <>
-      <NavBar />
-      <Map center={center} zoom={7} className="map">
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-
-        {Coordinates.map((area) => (
-          <Marker
-            key={area.id}
-            position={[area.lat, area.long]}
-            onclick={() => {
-              setActiveArea(area);
-            }}
-            icon={defaultIcon}
+      <Grid>
+        <NavBar />
+        <Map center={center} zoom={7} className="map">
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-        ))}
 
-        {activeArea && (
-          <Popup
-            key={activeArea.id}
-            position={[activeArea.lat, activeArea.long]}
-            onClose={() => {
-              setActiveArea(null);
-            }}
-          >
-            <div>
-              <h4>{activeArea.name}</h4>
-            </div>
-          </Popup>
-        )}
-      </Map>
-      {/* <Marker position={center} >
+          {Coordinates.map((area) => (
+            <Marker
+              key={area.id}
+              position={[area.lat, area.long]}
+              onclick={() => {
+                setActiveArea(area);
+              }}
+              icon={defaultIcon}
+            />
+          ))}
+
+          {activeArea && (
+            <Popup
+              key={activeArea.id}
+              position={[activeArea.lat, activeArea.long]}
+              onClose={() => {
+                setActiveArea(null);
+              }}
+            >
+              <div>
+                <h4>{activeArea.name}</h4>
+              </div>
+            </Popup>
+          )}
+        </Map>
+        {/* <Marker position={center} >
           <Popup position={center}>This is the pop up test</Popup>
         </Marker>
       </Map> */}
-      <AreaList />
+        <AreaList />
+      </Grid>
     </>
   );
 }
