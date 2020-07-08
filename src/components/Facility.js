@@ -43,14 +43,8 @@ const useStyles = makeStyles((theme) => ({
 function Facility({ name, description, directions, lat, long, updated }) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
-  const [color, setColor] = useState("grey");
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
-  };
-
-  const handleFavorite = (event) => {
-    setColor(event.target.clicked ? "pink" : "grey");
   };
 
   return (
@@ -62,13 +56,8 @@ function Facility({ name, description, directions, lat, long, updated }) {
           <CardActionArea>
             <CardHeader title={name} />
             <CardActions disableSpacing>
-              <IconButton
-                aria-label="add to favorites"
-                onClick={handleFavorite}
-              >
-                <FavoriteIcon clicked={color === "pink"}>
-                  {/* <Link >Add to Favorites</Link> */}
-                </FavoriteIcon>
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon></FavoriteIcon>
               </IconButton>
 
               <IconButton
@@ -91,9 +80,23 @@ function Facility({ name, description, directions, lat, long, updated }) {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
+                <Typography component="body">
+                  <strong>Description: </strong>
+                </Typography>
                 <Typography
                   component="body"
                   dangerouslySetInnerHTML={{ __html: description }}
+                ></Typography>
+                <Typography component="body2">
+                  <strong>Last Updated: </strong>
+                  {updated}
+                </Typography>
+                <Typography component="body2">
+                  <strong>Directions: </strong>
+                </Typography>
+                <Typography
+                  component="body"
+                  dangerouslySetInnerHTML={{ __html: directions }}
                 ></Typography>
               </CardContent>
             </Collapse>
