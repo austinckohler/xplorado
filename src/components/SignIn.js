@@ -13,9 +13,6 @@ import firebase from "firebase/app";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -54,73 +51,92 @@ export default function SignIn() {
   return (
     <>
       <NavBar />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <div>{error !== null && <div>{error}</div>}</div>
-        <form
-          className={classes.form}
-          noValidate
-          style={{ maxWidth: "1024px" }}
+      <div
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1491609154219-ffd3ffafd992?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          height: "93.36vh",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "30%",
+            margin: "auto",
+          }}
         >
-          <TextField
-            variant="outlined"
-            margin="dense"
-            required
-            fullWidth
-            id="userEmail"
-            label="Email Address"
-            name="userEmail"
-            value={email}
-            autoComplete="email"
-            autoFocus
-            onChange={(event) => onChange(event)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="userPassword"
-            value={password}
-            label="Password"
-            type="password"
-            id="userPassword"
-            autoComplete="current-password"
-            onChange={(event) => onChange(event)}
-          />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={(event) => {
-              signInWithEmailAndPasswordHandler(event, email, password);
-            }}
+          <Typography component="h1" variant="h5" className={classes.paper}>
+            Sign in
+          </Typography>
+          <div>{error !== null && <div>{error}</div>}</div>
+          <form
+            className={classes.form}
+            noValidate
+            style={{ maxWidth: "1024px" }}
           >
-            Sign In
-          </Button>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="userEmail"
+              label="Email Address"
+              name="userEmail"
+              value={email}
+              autoComplete="email"
+              autoFocus
+              onChange={(event) => onChange(event)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="userPassword"
+              value={password}
+              label="Password"
+              type="password"
+              id="userPassword"
+              autoComplete="current-password"
+              onChange={(event) => onChange(event)}
+            />
 
-          <StyledFirebaseAuth
-            uiConfig={uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
-          <Grid container style={{ padding: "1rem" }}>
-            <Grid item xs>
-              <Link href="passwordReset" variant="body2">
-                Forgot password?
-              </Link>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={(event) => {
+                signInWithEmailAndPasswordHandler(event, email, password);
+              }}
+            >
+              Sign In
+            </Button>
+
+            <StyledFirebaseAuth
+              uiConfig={uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+            <Grid container style={{ padding: "1rem" }}>
+              <Grid item xs>
+                <Link href="passwordReset" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="signUp" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Link href="signUp" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
+          </form>
+        </div>
       </div>
     </>
   );

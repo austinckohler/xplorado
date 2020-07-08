@@ -40,6 +40,7 @@ function AreasMap(props) {
 
   return (
     <>
+      <NavBar />
       <Grid container component="main" className={classes.root}>
         <CssBaseline />
         <Grid

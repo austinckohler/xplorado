@@ -5,7 +5,7 @@ import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-// import Container from "@material-ui/core/Container";
+
 import { auth, uiConfig, generateUserDocument } from "../firebase";
 import NavBar from "./NavBar";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -14,9 +14,6 @@ import firebase from "firebase/app";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -72,90 +69,95 @@ export default function SignUp() {
   return (
     <>
       <NavBar />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Sign Up
-        </Typography>
-        <div>{error !== null && <div>{error}</div>}</div>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="displayName"
-            label="First and Last Name"
-            name="displayName"
-            value={displayName}
-            autoFocus
-            onChange={(event) => onChange(event)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="userEmail"
-            label="Email Address"
-            name="userEmail"
-            value={email}
-            autoComplete="email"
-            autoFocus
-            onChange={(event) => onChange(event)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="userPassword"
-            value={password}
-            label="Password"
-            type="password"
-            id="userPassword"
-            autoComplete="current-password"
-            onChange={(event) => onChange(event)}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={(event) => {
-              createUserWithEmailAndPasswordHandler(event, email, password);
-            }}
-          >
-            Sign Up
-          </Button>
-          <StyledFirebaseAuth
-            uiConfig={uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
-          {/* <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-            onClick={() => {
-              try {
-                signInWithGoogle();
-              } catch (error) {
-                console.error("Error signing in with Google", error);
-              }
-            }}
-          >
-            Sign in with Google
-          </Button> */}
-          <Grid container>
-            <Grid item xs>
-              <Link href="signIn" variant="body2">
-                Already have an account? Sign In
-              </Link>
+      <div
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1471455558438-c1e9d5854d85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80)",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          height: "93.36vh",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "30%",
+            margin: "auto",
+          }}
+        >
+          <Typography component="h1" variant="h5" className={classes.paper}>
+            Sign in
+          </Typography>
+          <div>{error !== null && <div>{error}</div>}</div>
+          <form className={classes.form} noValidate>
+            <TextField
+              variant="filled"
+              margin="normal"
+              required
+              fullWidth
+              id="displayName"
+              label="First and Last Name"
+              name="displayName"
+              value={displayName}
+              autoFocus
+              onChange={(event) => onChange(event)}
+            />
+            <TextField
+              variant="filled"
+              margin="normal"
+              required
+              fullWidth
+              id="userEmail"
+              label="Email Address"
+              name="userEmail"
+              value={email}
+              autoComplete="email"
+              autoFocus
+              onChange={(event) => onChange(event)}
+            />
+            <TextField
+              variant="filled"
+              margin="normal"
+              required
+              fullWidth
+              name="userPassword"
+              value={password}
+              label="Password"
+              type="password"
+              id="userPassword"
+              autoComplete="current-password"
+              onChange={(event) => onChange(event)}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={(event) => {
+                createUserWithEmailAndPasswordHandler(event, email, password);
+              }}
+            >
+              Sign Up
+            </Button>
+            <Grid container>
+              <Grid item xs align="center">
+                <Link href="signIn" variant="body2" focusVisible>
+                  Already have an account? Sign In
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
+            <StyledFirebaseAuth
+              className={classes.submit}
+              fullWidth
+              uiConfig={uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          </form>
+        </div>
       </div>
     </>
   );

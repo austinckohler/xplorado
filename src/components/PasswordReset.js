@@ -12,9 +12,6 @@ import NavBar from "./NavBar";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -57,50 +54,69 @@ export default function PasswordReset() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="sm">
+    <>
       <NavBar />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Forgot your password?
-        </Typography>
-        <Typography variant="body2" align="center">
-          {"Enter your email address below and we'll " +
-            "send you a link to reset your password."}
-        </Typography>
-        <form className={classes.form} noValidate action="">
-          {emailHasBeenSent && <div>An email has been sent to you!</div>}
-          {error !== null && <div>{error}</div>}
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            type="email"
-            id="userEmail"
-            label="Email Address"
-            name="userEmail"
-            value={email}
-            autoComplete="email"
-            autoFocus
-            onChange={onChange}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={(event) => {
-              sendResetEmail(event);
-            }}
-          >
-            Send me a reset link
-          </Button>
-        </form>
-        <Link href="signUp" variant="body2">
-          &larr; back to sign in page
-        </Link>
+      <div
+        style={{
+          height: "93.35vh",
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1458442310124-dde6edb43d10?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "28%",
+            margin: "auto",
+          }}
+        >
+          <Typography component="h1" variant="h5" className={classes.paper}>
+            Forgot your password?
+          </Typography>
+          <Typography variant="body2" align="center">
+            {"Enter your email address below and we'll " +
+              "send you a link to reset your password."}
+          </Typography>
+          <form className={classes.form} noValidate action="">
+            {emailHasBeenSent && <div>An email has been sent to you!</div>}
+            {error !== null && <div>{error}</div>}
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              type="email"
+              id="userEmail"
+              label="Email Address"
+              name="userEmail"
+              value={email}
+              autoComplete="email"
+              autoFocus
+              onChange={onChange}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={(event) => {
+                sendResetEmail(event);
+              }}
+            >
+              Send me a reset link
+            </Button>
+          </form>
+          <Link href="signUp" variant="body2">
+            &larr; back to sign in page
+          </Link>
+        </div>
       </div>
-    </Container>
+    </>
   );
 }

@@ -39,12 +39,23 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
 }));
-
+const grey = "#696969";
+const pink = "rgb(242, 133, 150)";
 function Facility({ name, description, directions, lat, long, updated }) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
+  const [toggle, setToggle] = useState(false);
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+  //   const handleFavorite = (color, clicked) => {
+  //     setColor(color);
+  //     setClicked(clicked);
+  //   };
+
+  const handleToggle = () => {
+    toggle ? setToggle(false) : setToggle(true);
   };
 
   return (
@@ -56,8 +67,13 @@ function Facility({ name, description, directions, lat, long, updated }) {
           <CardActionArea>
             <CardHeader title={name} />
             <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon></FavoriteIcon>
+              <IconButton aria-label="add to favorites" onClick={handleToggle}>
+                {toggle ? (
+                  <FavoriteIcon style={{ color: pink }} />
+                ) : (
+                  <FavoriteIcon style={{ color: grey }} />
+                )}
+                {/* <FavoriteIcon ></FavoriteIcon> */}
               </IconButton>
 
               <IconButton
@@ -91,28 +107,22 @@ function Facility({ name, description, directions, lat, long, updated }) {
                   <strong>Last Updated: </strong>
                   <span>{updated}</span>
                 </Typography>
-                <Typography component="body">
-                  <strong>Directions: </strong>
-                  {directions !== "" ? (
+                {directions !== "" ? (
+                  <Typography component="body">
+                    <strong>Directions: </strong>
                     <span
                       dangerouslySetInnerHTML={{ __html: directions }}
-                    ></span>
-                  ) : (
-                    <span>Sorry, directions to {name} are unknown.</span>
-                  )}
-                </Typography>
-                <Typography component="body">
-                  <strong>Coordinates: </strong>
-                  <span>
-                    {lat !== 0 && long !== 0 ? (
-                      <span>
-                        {lat}, {long}
-                      </span>
-                    ) : (
-                      <span>Sorry, coordinates for {name} were not found.</span>
-                    )}
-                  </span>
-                </Typography>
+                    ></span>{" "}
+                  </Typography>
+                ) : null}
+                {lat !== 0 && long !== 0 ? (
+                  <Typography component="body">
+                    <strong>Coordinates: </strong>
+                    <span>
+                      {lat}, {long}
+                    </span>
+                  </Typography>
+                ) : null}
               </CardContent>
             </Collapse>
           </CardActionArea>

@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
 }));
+const grey = "#696969";
+const pink = "rgb(242, 133, 150)";
+
 function Area({
   name,
   description,
@@ -51,9 +54,15 @@ function Area({
 }) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleToggle = () => {
+    toggle ? setToggle(false) : setToggle(true);
+  };
+
   return (
     <>
       <Grid
