@@ -1,18 +1,43 @@
-import React, { useContext } from "react";
-import { AreaContext } from "../providers/AreasProvider";
-import { Typography, Grid } from "@material-ui/core";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import {
+  Typography,
+  Link,
+  Grid,
+  CardActionArea,
+  Card,
+  CardHeader,
+  CardActions,
+  Collapse,
+  IconButton,
+  CardContent,
+} from "@material-ui/core";
+import clsx from "clsx";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
-    minWidth: 300,
-    transition: "0.2s",
-    "&:hover": {
-      transform: "scale(1.1)",
-    },
+    minWidth: 250,
+  },
+  bullet: {
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)",
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
   },
 }));
-
 function Area({
   name,
   description,
@@ -24,82 +49,103 @@ function Area({
   map,
   phone,
 }) {
-  const [areas, setAreas] = useContext(AreaContext);
   const classes = useStyles();
+  const [expanded, setExpanded] = useState(false);
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
   return (
-    <Grid container spacing={4}>
-      <Grid item lg={4} direction="row">
-        <div
-          style={{
-            borderBottom: "1px dashed ",
-            marginBottom: "5px",
-            padding: "2rem",
-            margin: "auto",
-          }}
-        >
-          <Typography
-            component="h1"
-            variant="h5"
-            style={{ fontWeight: "bold" }}
-          >
-            {name}
-          </Typography>
-          <h3>Description:</h3>
-          <p dangerouslySetInnerHTML={{ __html: description }}></p>
-          <p> Last Updated: {updated}</p>
-          <h3>Directions:</h3>
-          <p>
-            {directions !== "" ? (
-              <p dangerouslySetInnerHTML={{ __html: directions }}></p>
-            ) : (
-              <p>Sorry, we could't find there any directions to {name}</p>
-            )}
-          </p>
-          <p>
-            {directions === "" && email !== "" ? (
-              <p>Try contacting the recreation area by email {email}</p>
-            ) : null}
-          </p>
-          {phone !== {} || "" || ":" ? (
-            <h4 style={{ display: "inline" }}>
-              Phone:
-              <span style={{ fontWeight: "normal" }}>{phone}</span>
-            </h4>
-          ) : null}
-          <br></br>
-          {email !== "" ? (
-            <h4 style={{ display: "inline" }}>
-              Email:
-              <span style={{ fontWeight: "normal" }}>{email}</span>
-            </h4>
-          ) : null}
-          <h3>
-            Coordinates:
-            <span>
-              {lat !== 0 && long !== 0 ? (
-                <span style={{ fontWeight: "normal", fontSize: "small" }}>
-                  {lat}, {long}
-                </span>
-              ) : (
-                <span style={{ fontWeight: "normal", fontSize: "small" }}>
-                  Sorry, we don't have coordinates for {name}
-                </span>
-              )}
-            </span>
-          </h3>
-          {map !== "" ? (
-            <h3>
-              Map:
-              <a
-                href={map}
-                style={{ fontWeight: "normal", fontSize: "small" }}
-                dangerouslySetInnerHTML={{ __html: map }}
-              ></a>
-            </h3>
-          ) : null}
-        </div>
+    <>
+      <Grid
+        style={{ paddingLeft: "1rem", paddingBottom: "1rem", margin: "auto" }}
+      >
+        <Grid item justify="center" alignItems="center">
+          <Card className={classes.root} raised>
+            <CardActionArea>
+              <CardHeader title={name} />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon></FavoriteIcon>
+                </IconButton>
+
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="Explore More"
+                >
+                  <Typography
+                    align="right"
+                    variant="body2"
+                    style={{ padding: ".1rem" }}
+                  >
+                    Learn more...
+                  </Typography>
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography component="body2">
+                    <strong>Description: </strong>
+                  </Typography>
+                  <Typography
+                    component="body"
+                    dangerouslySetInnerHTML={{ __html: description }}
+                  ></Typography>
+                  <Typography component="body">
+                    <strong>Last Updated: </strong>
+                    <span>{updated}</span>
+                  </Typography>
+                  {directions !== "" ? (
+                    <Typography component="body">
+                      <strong>Directions: </strong>
+
+                      <span
+                        dangerouslySetInnerHTML={{ __html: directions }}
+                      ></span>
+                    </Typography>
+                  ) : null}
+
+                  {lat !== 0 && long !== 0 ? (
+                    <Typography component="body">
+                      <strong>Coordinates: </strong>
+                      <span>
+                        {lat}, {long}
+                      </span>
+                    </Typography>
+                  ) : null}
+
+                  {phone !== "" ? (
+                    <Typography component="body">
+                      <strong>Phone: </strong>
+                      <span>{phone}</span>
+                    </Typography>
+                  ) : null}
+                  {email !== "" ? (
+                    <Typography component="body">
+                      <strong>Email: </strong>
+                      <span>{email}</span>
+                    </Typography>
+                  ) : null}
+                  {map !== "" ? (
+                    <Typography component="body">
+                      <strong>Map: </strong>
+                      <a
+                        href={map}
+                        dangerouslySetInnerHTML={{ __html: map }}
+                      ></a>
+                    </Typography>
+                  ) : null}
+                </CardContent>
+              </Collapse>
+            </CardActionArea>
+          </Card>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 }
 

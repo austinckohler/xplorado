@@ -119,10 +119,6 @@ function Facility({ name, description, directions, lat, long, updated }) {
         </Card>
       </Grid>
     </Grid>
-
-    //     //
-    //     //     </div>
-    //     //   );
   );
 }
 

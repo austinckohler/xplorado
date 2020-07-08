@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import { makeStyles } from "@material-ui/core/styles";
@@ -8,16 +8,18 @@ import Facility from "./Facility";
 import NavBar from "./NavBar";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
-
 import { Coordinates } from "./data/AreaData";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography, CssBaseline } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  mapContainer: {
-    marginTop: theme.spacing(2),
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+  root: {
+    height: "100vh",
+    flexGrow: 1,
+    padding: ".5rem",
+  },
+  paper: {
+    padding: theme.spacing(2),
+    color: theme.palette.text.secondary,
   },
 }));
 const defaultIcon = new Icon({
@@ -38,44 +40,69 @@ function AreasMap(props) {
 
   return (
     <>
-      <Grid>
-        <NavBar />
-        <Map center={center} zoom={7} className="map">
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-
-          {Coordinates.map((area) => (
-            <Marker
-              key={area.id}
-              position={[area.lat, area.long]}
-              onclick={() => {
-                setActiveArea(area);
-              }}
-              icon={defaultIcon}
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={6}
+          sm={6}
+          md={6}
+          lg={6}
+          xl={6}
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.root}
+        >
+          <Map center={center} zoom={7} className="map">
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
-          ))}
 
-          {activeArea && (
-            <Popup
-              key={activeArea.id}
-              position={[activeArea.lat, activeArea.long]}
-              onClose={() => {
-                setActiveArea(null);
-              }}
-            >
-              <div>
-                <h4>{activeArea.name}</h4>
-              </div>
-            </Popup>
-          )}
-        </Map>
-        {/* <Marker position={center} >
-          <Popup position={center}>This is the pop up test</Popup>
-        </Marker>
-      </Map> */}
-        <AreaList />
+            {Coordinates.map((area) => (
+              <Marker
+                key={area.id}
+                position={[area.lat, area.long]}
+                onclick={() => {
+                  setActiveArea(area);
+                }}
+                icon={defaultIcon}
+              />
+            ))}
+
+            {activeArea && (
+              <Popup
+                key={activeArea.id}
+                position={[activeArea.lat, activeArea.long]}
+                onClose={() => {
+                  setActiveArea(null);
+                }}
+              >
+                <div>
+                  <Typography variant="body">{activeArea.name}</Typography>
+                </div>
+              </Popup>
+            )}
+          </Map>
+        </Grid>
+
+        <Grid
+          item
+          xs={6}
+          sm={6}
+          md={6}
+          lg={6}
+          xl={6}
+          direction="row"
+          justify="center"
+          alignItems="center"
+          elevation={6}
+        >
+          <div className={classes.paper}>
+            <AreaList />
+          </div>
+        </Grid>
       </Grid>
     </>
   );
