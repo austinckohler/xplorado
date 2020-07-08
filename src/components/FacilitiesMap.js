@@ -10,15 +10,10 @@ import { campCoord } from "./data/FacilityData";
 import { Link, Typography, Grid, CssBaseline } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  mapContainer: {
-    marginTop: theme.spacing(2),
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   root: {
     height: "100vh",
     flexGrow: 1,
+    padding: ".5rem",
   },
   paper: {
     padding: theme.spacing(2),

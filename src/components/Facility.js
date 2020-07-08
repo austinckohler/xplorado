@@ -80,24 +80,39 @@ function Facility({ name, description, directions, lat, long, updated }) {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
-                <Typography component="body">
+                <Typography component="body2">
                   <strong>Description: </strong>
                 </Typography>
                 <Typography
                   component="body"
                   dangerouslySetInnerHTML={{ __html: description }}
                 ></Typography>
-                <Typography component="body2">
+                <Typography component="body">
                   <strong>Last Updated: </strong>
-                  {updated}
+                  <span>{updated}</span>
                 </Typography>
-                <Typography component="body2">
+                <Typography component="body">
                   <strong>Directions: </strong>
+                  {directions !== "" ? (
+                    <span
+                      dangerouslySetInnerHTML={{ __html: directions }}
+                    ></span>
+                  ) : (
+                    <span>Sorry, directions to {name} are unknown.</span>
+                  )}
                 </Typography>
-                <Typography
-                  component="body"
-                  dangerouslySetInnerHTML={{ __html: directions }}
-                ></Typography>
+                <Typography component="body">
+                  <strong>Coordinates: </strong>
+                  <span>
+                    {lat !== 0 && long !== 0 ? (
+                      <span>
+                        {lat}, {long}
+                      </span>
+                    ) : (
+                      <span>Sorry, coordinates for {name} were not found.</span>
+                    )}
+                  </span>
+                </Typography>
               </CardContent>
             </Collapse>
           </CardActionArea>
@@ -105,39 +120,7 @@ function Facility({ name, description, directions, lat, long, updated }) {
       </Grid>
     </Grid>
 
-    //     //     <div
-    //     //       style={{
-    //     //         borderBottom: "1px dashed ",
-    //     //         marginBottom: "5px",
-    //     //         padding: "2rem",
-    //     //         margin: "auto",
-    //     //       }}
-    //     //     >
-    //     //       <h3>Description:</h3>
-    //     //       <p dangerouslySetInnerHTML={{ __html: description }}></p>
-    //     //       <p>
-    //     //         <strong>Last Updated: </strong>
-    //     //         {updated}
-    //     //       </p>
-    //     //       <h3>Directions:</h3>
-    //     //       {directions !== "" ? (
-    //     //         <p dangerouslySetInnerHTML={{ __html: directions }}></p>
-    //     //       ) : (
-    //     //         <span>Sorry, directions to {name} are unknown.</span>
-    //     //       )}
-    //     //       <p>
-    //     //         <strong>Coordinates: </strong>
-    //     //         <span>
-    //     //           {lat !== 0 && long !== 0 ? (
-    //     //             <span>
-    //     //               {/* <MarkerData lat={lat} long={long} /> */}
-    //     //               {lat}, {long}
-    //     //             </span>
-    //     //           ) : (
-    //     //             <span>Sorry, coordinates for {name} were not found.</span>
-    //     //           )}
-    //     //         </span>
-    //     //       </p>
+    //     //
     //     //     </div>
     //     //   );
   );
