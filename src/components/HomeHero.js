@@ -56,7 +56,7 @@ function HomeHero() {
             variant="h4"
             className={classes.h5}
           >
-            Enjoy hiking, biking, camping, xploring in solitude crowds?
+            Enjoy hiking, biking, camping, and xploring in solitude?
           </Typography>
           <Typography
             variant="h5"

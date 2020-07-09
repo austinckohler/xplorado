@@ -73,8 +73,15 @@ function Area({
             <CardActionArea>
               <CardHeader title={name} />
               <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon></FavoriteIcon>
+                <IconButton
+                  aria-label="add to favorites"
+                  onClick={handleToggle}
+                >
+                  {toggle ? (
+                    <FavoriteIcon style={{ color: pink }} />
+                  ) : (
+                    <FavoriteIcon style={{ color: grey }} />
+                  )}
                 </IconButton>
 
                 <IconButton

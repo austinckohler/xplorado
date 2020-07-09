@@ -8,6 +8,7 @@ import markerIcon from "leaflet/dist/images/marker-icon.png";
 import FacilityList from "../containers/FacilityList";
 import { campCoord } from "./data/FacilityData";
 import { Link, Typography, Grid, CssBaseline } from "@material-ui/core";
+import Search from "../actions/Search";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -96,6 +97,7 @@ function FacilitiesMap(props) {
           alignItems="center"
           elevation={6}
         >
+          {/* <Search /> */}
           <div className={classes.paper}>
             <FacilityList />
           </div>
