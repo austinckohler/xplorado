@@ -12,13 +12,6 @@ import { Container } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -35,39 +28,40 @@ export default function ProfilePage() {
   return (
     <>
       <NavBar />
-      <header
-        style={{
-          paddingTop: "50px",
-          background: `url(${
-            photoURL ||
-            "https://images.unsplash.com/photo-1591189327425-aa5f21c7ab2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"
-          }) no-repeat center center`,
-          // backgroundSize: "cover",
-          height: "20vh",
-          width: '200px"',
-        }}
-      />
-
-      <Container width="md">
-        <Typography component="h2" variant="h5" align="center">
-          {displayName}
-        </Typography>
-        <Typography component="h3" variant="h5" align="center">
-          {email}
-        </Typography>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          alignItems="center"
-          className={classes.submit}
-          onClick={() => {
-            auth.signOut();
+      <div className={classes.paper}>
+        <header
+          style={{
+            paddingTop: "50px",
+            background: `url(${
+              photoURL ||
+              "https://images.unsplash.com/photo-1591189327425-aa5f21c7ab2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"
+            }) no-repeat center center`,
+            // backgroundSize: "cover",
+            height: "200px",
+            width: '200px"',
           }}
-        >
-          Sign Out
-        </Button>
-      </Container>
+        />
+
+        <Container width="md">
+          <Typography component="h2" variant="h5">
+            {displayName}
+          </Typography>
+          <Typography component="h3" variant="h5">
+            {email}
+          </Typography>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={() => {
+              auth.signOut();
+            }}
+          >
+            Sign Out
+          </Button>
+        </Container>
+      </div>
     </>
   );
 }
