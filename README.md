@@ -13,9 +13,6 @@ Please fork and clone this repository for the front-end and, https://github.com/
 
 https://www.youtube.com/watch?v=fPokXn_Fi6Q
 
-Home page:
-<img src="/Users/austinkohler/Desktop/Screen Shot 2020-07-14 at 5.14.03 PM.png">
-
 ## Built With
 
 - Javascript
