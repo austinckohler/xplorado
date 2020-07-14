@@ -8,7 +8,6 @@ import PasswordReset from "./PasswordReset";
 import Home from "./Home";
 import AreasMap from "./AreasMap";
 import FacilitiesMap from "./FacilitiesMap";
-// will render either the sign-in/sign-up routes or the profile page, depending on whether the user has been signed into the application
 
 export default function Application(props) {
   const user = useContext(UserContext);

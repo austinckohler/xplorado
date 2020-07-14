@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Typography,
-  Link,
   Grid,
   CardActionArea,
   Card,
@@ -73,89 +72,21 @@ function Area({
             <CardActionArea>
               <CardHeader title={name} />
               <CardActions disableSpacing>
-                <IconButton
-                  aria-label="add to favorites"
-                  onClick={handleToggle}
-                >
-                  {toggle ? (
-                    <FavoriteIcon style={{ color: pink }} />
-                  ) : (
-                    <FavoriteIcon style={{ color: grey }} />
-                  )}
-                </IconButton>
+                {favorite(handleToggle, toggle)}
 
-                <IconButton
-                  className={clsx(classes.expand, {
-                    [classes.expandOpen]: expanded,
-                  })}
-                  onClick={handleExpandClick}
-                  aria-expanded={expanded}
-                  aria-label="Explore More"
-                >
-                  <Typography
-                    align="right"
-                    variant="body2"
-                    style={{ padding: ".1rem" }}
-                  >
-                    Learn more...
-                  </Typography>
-                  <ExpandMoreIcon />
-                </IconButton>
+                {learnMore(classes, expanded, handleExpandClick)}
               </CardActions>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Typography component="body2">
-                    <strong>Description: </strong>
-                  </Typography>
-                  <Typography
-                    component="body"
-                    dangerouslySetInnerHTML={{ __html: description }}
-                  ></Typography>
-                  <Typography component="body">
-                    <strong>Last Updated: </strong>
-                    <span>{updated}</span>
-                  </Typography>
-                  {directions !== "" ? (
-                    <Typography component="body">
-                      <strong>Directions: </strong>
-
-                      <span
-                        dangerouslySetInnerHTML={{ __html: directions }}
-                      ></span>
-                    </Typography>
-                  ) : null}
-
-                  {lat !== 0 && long !== 0 ? (
-                    <Typography component="body">
-                      <strong>Coordinates: </strong>
-                      <span>
-                        {lat}, {long}
-                      </span>
-                    </Typography>
-                  ) : null}
-
-                  {phone !== "" ? (
-                    <Typography component="body">
-                      <strong>Phone: </strong>
-                      <span>{phone}</span>
-                    </Typography>
-                  ) : null}
-                  {email !== "" ? (
-                    <Typography component="body">
-                      <strong>Email: </strong>
-                      <span>{email}</span>
-                    </Typography>
-                  ) : null}
-                  {map !== "" ? (
-                    <Typography component="body">
-                      <strong>Map: </strong>
-                      <a
-                        href={map}
-                        dangerouslySetInnerHTML={{ __html: map }}
-                      ></a>
-                    </Typography>
-                  ) : null}
-                </CardContent>
+                {cardContent(
+                  description,
+                  updated,
+                  directions,
+                  lat,
+                  long,
+                  phone,
+                  email,
+                  map
+                )}
               </Collapse>
             </CardActionArea>
           </Card>
@@ -166,3 +97,94 @@ function Area({
 }
 
 export default Area;
+function cardContent(
+  description,
+  updated,
+  directions,
+  lat,
+  long,
+  phone,
+  email,
+  map
+) {
+  return (
+    <CardContent>
+      <Typography component="body2">
+        <strong>Description: </strong>
+      </Typography>
+      <Typography
+        component="body"
+        dangerouslySetInnerHTML={{ __html: description }}
+      ></Typography>
+      <Typography component="body">
+        <strong>Last Updated: </strong>
+        <span>{updated}</span>
+      </Typography>
+      {directions !== "" ? (
+        <Typography component="body">
+          <strong>Directions: </strong>
+
+          <span dangerouslySetInnerHTML={{ __html: directions }}></span>
+        </Typography>
+      ) : null}
+
+      {lat !== 0 && long !== 0 ? (
+        <Typography component="body">
+          <strong>Coordinates: </strong>
+          <span>
+            {lat}, {long}
+          </span>
+        </Typography>
+      ) : null}
+
+      {phone !== "" ? (
+        <Typography component="body">
+          <strong>Phone: </strong>
+          <span>{phone}</span>
+        </Typography>
+      ) : null}
+      {email !== "" ? (
+        <Typography component="body">
+          <strong>Email: </strong>
+          <span>{email}</span>
+        </Typography>
+      ) : null}
+      {map !== "" ? (
+        <Typography component="body">
+          <strong>Map: </strong>
+          <a href={map} dangerouslySetInnerHTML={{ __html: map }}></a>
+        </Typography>
+      ) : null}
+    </CardContent>
+  );
+}
+
+function learnMore(classes, expanded, handleExpandClick) {
+  return (
+    <IconButton
+      className={clsx(classes.expand, {
+        [classes.expandOpen]: expanded,
+      })}
+      onClick={handleExpandClick}
+      aria-expanded={expanded}
+      aria-label="Explore More"
+    >
+      <Typography align="right" variant="body2" style={{ padding: ".1rem" }}>
+        Learn more...
+      </Typography>
+      <ExpandMoreIcon />
+    </IconButton>
+  );
+}
+
+function favorite(handleToggle, toggle) {
+  return (
+    <IconButton aria-label="add to favorites" onClick={handleToggle}>
+      {toggle ? (
+        <FavoriteIcon style={{ color: pink }} />
+      ) : (
+        <FavoriteIcon style={{ color: grey }} />
+      )}
+    </IconButton>
+  );
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link, Toolbar, Typography, AppBar } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
     width: "100%",
@@ -52,11 +52,6 @@ function NavBar() {
               Dispersed Camping
             </Typography>
           </Link>
-          {/* <Link href="facility" variant="button" className={classes.linkButton}>
-            <Typography variant="body2" className={classes.title}>
-              Facility
-            </Typography>
-          </Link> */}
           <Link href="signIn" variant="button" className={classes.linkButton}>
             <Typography variant="body2" className={classes.title}>
               Login

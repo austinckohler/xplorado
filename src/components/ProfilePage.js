@@ -1,4 +1,3 @@
-//useContext hook was used to get current value of UserContext and grabbed the pertainent data.
 import React, { useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { auth } from "../firebase";
@@ -36,7 +35,6 @@ export default function ProfilePage() {
               photoURL ||
               "https://images.unsplash.com/photo-1591189327425-aa5f21c7ab2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"
             }) no-repeat center center`,
-            // backgroundSize: "cover",
             height: "200px",
             width: '200px"',
           }}

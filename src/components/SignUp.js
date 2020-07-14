@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -31,7 +31,6 @@ export default function SignUp() {
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
 
-  //create a new user with email, password with createUserWithEmailAndPassword method by Firebase, and generate user document for the new user
   const createUserWithEmailAndPasswordHandler = async (
     event,
     email,

@@ -8,7 +8,6 @@ export default class UserProvider extends Component {
     user: null,
   };
 
-  //allows new users to create an account using email and password.
   componentDidMount = async () => {
     auth.onAuthStateChanged(async (userAuth) => {
       const user = await generateUserDocument(userAuth);
